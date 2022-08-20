@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/bash
 
 #docker run -it --rm -v --user "$(id -u):$(id -g)"  "$PWD":/usr/src/myapp rust_sdk  $@
 #docker run -it --rm  --user "$(whoami)" -v   "$PWD":/usr/src/myapp rust_sdk  $@
