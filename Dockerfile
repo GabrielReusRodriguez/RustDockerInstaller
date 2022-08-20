@@ -1,13 +1,16 @@
 FROM rust
-
-WORKDIR /usr/src/myapp
-
-#ENV USER=${USER}
+ARG UserName=gabriel
+ARG UID=1000
+ARG GID=1000
 
 VOLUME ["/usr/src/myapp"]
 
-#RUN cargo install --path .
+WORKDIR /usr/src/myapp
 
-#CMD  ["myapp"]
 
-#docker run -it --rm -e USER=$USER  -v "$PWD":/usr/src/myapp -w /usr/src/myapp rust:1.23.0 cargo  build
+RUN groupadd -g ${GID} ${UserName}
+RUN useradd -m -u ${UID} -g ${GID} -s /bin/bash ${UserName}
+USER ${UserName}
+
+RUN rustc --version
+RUN cargo --version
